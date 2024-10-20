@@ -1,0 +1,26 @@
+<div class="Pcontainer">
+    <h2>Search</h2>
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Search articles..."
+      [(ngModel)]="searchText"
+      class="search-input"
+    />
+    <i
+      *ngIf="searchText"
+      class="cIcon pi pi-times"
+      (click)="clearSearch()"
+      
+    ></i>
+  </div>
+  <div class="results-count">
+    <span><p>{{ numberOfResults }} posts</p>were found</span>
+  </div>
+  <div class="results">
+    <div *ngFor="let article of filteredArticles">
+      <h3 [innerHTML]="highlightText(article.title, searchText)"></h3>
+      <p [innerHTML]="highlightText(article.content, searchText)"></p>
+    </div>
+  </div>
+  </div>
